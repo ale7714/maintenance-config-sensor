@@ -9,7 +9,7 @@ import (
 	"go.viam.com/rdk/module"
 	"go.viam.com/utils"
 
-	maintenanceConfigSensor "github.com/kschappacher/maintenance-config-sensor"
+	maintenanceConfigSensor "github.com/Kschappacher/maintenance-config-sensor"
 )
 
 func main() {

@@ -1,11 +1,10 @@
-module github.com/kschappacher/maintenance-config-sensor
+module github.com/Kschappacher/maintenance-config-sensor
 
 go 1.23
 
 toolchain go1.23.2
 
 require (
-	github.com/viam-labs/module-templates-golang/sensor v0.0.0-00010101000000-000000000000
 	go.viam.com/rdk v0.47.2
 	go.viam.com/utils v0.1.106
 )

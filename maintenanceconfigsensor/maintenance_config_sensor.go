@@ -10,7 +10,7 @@ import (
 )
 
 var (
-    Model            = resource.NewModel("viam-labs", "maintenance-config-sensor", "maintenanceConfigSensor")
+    Model = resource.NewModel("viam-labs", "maintenance-config-sensor", "maintenanceConfigSensor")
     errUnimplemented = errors.New("unimplemented")
 )
 
@@ -74,12 +74,6 @@ func (s *maintenanceConfigSensor) Name() resource.Name {
 
 // Reconfigures the model. Most models can be reconfigured in place without needing to rebuild. If you need to instead create a new instance of the sensor, throw a NewMustBuildError.
 func (s *maintenanceConfigSensor) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
-    _, err := resource.NativeConfig[*Config](conf)
-    if err != nil {
-        s.logger.Warn("Error reconfiguring module with ", err)
-        return err
-    }
-
     s.name = conf.ResourceName()
     
     return nil

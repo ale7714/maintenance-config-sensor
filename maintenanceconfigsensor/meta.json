@@ -1,0 +1,14 @@
+{
+  "$schema": "https://dl.viam.dev/module.schema.json",
+  "module_id": "kschap:maintenance-config-sensor",
+  "visibility": "private",
+  "url": "https://github.com/Kschappacher/maintenance-config-sensor",
+  "description": "maintenance config sensor to be used to test maintenance configs",
+  "models": [
+    {
+      "api": "rdk:component:sensor",
+      "model": "kschap:sensor:maintenanceconfigsensor"
+    }
+  ],
+  "entrypoint": "exec"
+}

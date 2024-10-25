@@ -13,9 +13,10 @@ import (
 	robotimpl "go.viam.com/rdk/robot/impl"
 	"go.viam.com/rdk/robot/web"
 	_ "go.viam.com/rdk/services/sensors/builtin"
+	rdkutils "go.viam.com/rdk/utils"
 	"go.viam.com/utils"
 
-	maintenanceConfigSensor "github.com/kschappacher/maintenance-config-sensor/sensor"
+	maintenanceConfigSensor "github.com/Kschappacher/maintenance-config-sensor"
 )
 
 func main() {
@@ -41,6 +42,9 @@ func mainWithArgs(ctx context.Context, args []string, logger logging.Logger) (er
                 Name:  os.Args[1],
                 API:   sensor.API,
                 Model: maintenanceConfigSensor.Model,
+                Attributes: rdkutils.AttributeMap{},
+                ConvertedAttributes: &maintenanceConfigSensor.Config{
+                },
             },
         },
     }
