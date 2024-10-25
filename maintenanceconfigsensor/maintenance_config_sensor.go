@@ -10,7 +10,7 @@ import (
 )
 
 var (
-    Model = resource.NewModel("viam-labs", "maintenance-config-sensor", "maintenanceConfigSensor")
+    Model = resource.NewModel("kschap", "sensor", "maintenanceconfigsensor")
     errUnimplemented = errors.New("unimplemented")
 )
 
