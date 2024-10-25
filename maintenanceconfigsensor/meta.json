@@ -10,5 +10,10 @@
       "model": "kschap:sensor:maintenanceconfigsensor"
     }
   ],
-  "entrypoint": "exec"
+  "build": {
+    "build": "make module.tar.gz",
+    "path": "module.tar.gz",
+    "arch" : ["linux/arm64"]
+  },
+  "entrypoint": "bin/maintenanceconfigsensor"
 }
