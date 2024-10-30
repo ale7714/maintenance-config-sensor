@@ -22,7 +22,10 @@ func init() {
     )
 }
 
-type Config struct {}
+// ShouldError is optional
+type Config struct {
+    ShouldError bool `json:"should_error"`
+}
 
 // Validate validates the config and returns implicit dependencies.
 func (cfg *Config) Validate(path string) ([]string, error) {
@@ -46,6 +49,7 @@ func newMaintenanceConfigSensor(ctx context.Context, deps resource.Dependencies,
         name:        rawConf.ResourceName(),
         logger:      logger,
         cfg:         conf,
+        shouldError: conf.ShouldError,
         cancelCtx:   cancelCtx,
         cancelFunc:  cancelFunc,
     }
@@ -63,6 +67,7 @@ type maintenanceConfigSensor struct {
     name   resource.Name
     logger logging.Logger
     cfg    *Config
+    shouldError bool
 
     cancelCtx  context.Context
     cancelFunc func()
@@ -74,12 +79,22 @@ func (s *maintenanceConfigSensor) Name() resource.Name {
 
 // Reconfigures the model. Most models can be reconfigured in place without needing to rebuild. If you need to instead create a new instance of the sensor, throw a NewMustBuildError.
 func (s *maintenanceConfigSensor) Reconfigure(ctx context.Context, deps resource.Dependencies, conf resource.Config) error {
-    s.name = conf.ResourceName()
+    sensorConfig, err := resource.NativeConfig[*Config](conf)
+    if err != nil {
+        s.logger.Warn("Error reconfiguring module with ", err)
+        return err
+    }
     
+    s.cfg = sensorConfig
+    s.shouldError = sensorConfig.ShouldError
+    s.name = conf.ResourceName()
     return nil
 }
 
 func (s *maintenanceConfigSensor) Readings(ctx context.Context, extra map[string]interface{}) (map[string]interface{}, error) {
+    if s.shouldError {
+        return nil, errors.New("error getting sensor readings")
+    }
     return map[string]interface{}{"enable": true, "disable": false, "error": 1}, nil
 }
 
