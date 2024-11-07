@@ -16,6 +16,6 @@ Keys that this module supports
 ```
 "enable" : Returns true allowing machine to reconfigure
 "disable": Returns false disable reconfigure
-"error": Returns a non-boolean reading, allows for reconfigure
+"error": Returns a non-boolean reading, disable reconfigure
 ```
   
