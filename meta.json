@@ -7,7 +7,7 @@
   "models": [
     {
       "api": "rdk:component:sensor",
-      "model": "kschap:sensor:maintenanceconfigsensor"
+      "model": "aleparedes:sensor:maintenanceconfigsensor"
     }
   ],
   "build": {

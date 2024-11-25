@@ -1,4 +1,4 @@
-module github.com/Kschappacher/maintenance-config-sensor
+module github.com/ale7714/maintenance-config-sensor
 
 go 1.23
 
