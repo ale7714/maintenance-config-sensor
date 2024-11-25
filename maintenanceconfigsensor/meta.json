@@ -1,8 +1,8 @@
 {
   "$schema": "https://dl.viam.dev/module.schema.json",
-  "module_id": "kschap:maintenance-config-sensor",
-  "visibility": "public",
-  "url": "https://github.com/Kschappacher/maintenance-config-sensor",
+  "module_id": "aleparedes:maintenance-config-sensor",
+  "visibility": "private",
+  "url": "https://github.com/ale7714/maintenance-config-sensor",
   "description": "maintenance config sensor to be used to test maintenance configs",
   "models": [
     {
